@@ -1,31 +1,63 @@
-import styles from './postCard.module.css'
-import DeleteIcon from '../../assets/delete-icon.svg'
-import EditIcon from '../../assets/edit-icon.svg'
+import styles from "./postCard.module.css";
+import DeleteIcon from "../../assets/delete-icon.svg";
+import EditIcon from "../../assets/edit-icon.svg";
+import { useDispatch, useSelector } from "react-redux";
+import DeleteModal from "../DeleteModal";
+import { useState } from "react";
+import { deletePost } from "../../actions/apiRequests";
+import { setPosts } from "../../actions/postActions";
 
-export default function PostCard(){
-    return(
-        <div className={styles.postCardWrapper}>
-            <div className={styles.header}>
-                <h2>My First Post</h2>
+function ActionsButtons({ postId }) {
+  const dispatch = useDispatch();
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
 
-                <div className={styles.actionsWrapper}>
-                    <span>
-                        <img src={DeleteIcon} alt='Delete Post' />
-                    </span>
-                    <span>
-                        <img src={EditIcon} alt='Edit Post' />
-                    </span>
-                </div>
-            </div>
-            <div className={styles.content}>
-                <div className={styles.informationWrapper}>
-                    <p>@victor</p>
-                    <p>25 minutes ago</p>
-                </div>
-                <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis, expedita! Non natus voluptates, nulla eum quos beatae ipsam labore eveniet a nesciunt aperiam praesentium lux odio incidunt ad. Voluptas, labore dolor.
-                </p>
-            </div>
+  function handleCloseModal() {
+    setOpenDeleteModal(false);
+  }
+
+  async function handleDelete() {
+    const postsAfterDelete = await deletePost(postId);
+    dispatch(setPosts(postsAfterDelete))
+  }
+
+  return (
+    <>
+      <div className={styles.actionsWrapper}>
+        <span onClick={() => setOpenDeleteModal(true)}>
+          <img src={DeleteIcon} alt="Delete Post" />
+        </span>
+        <span>
+          <img src={EditIcon} alt="Edit Post" />
+        </span>
+        {openDeleteModal && (
+          <DeleteModal
+            closeModal={handleCloseModal}
+            handleDelete={handleDelete}
+          />
+        )}
+      </div>
+    </>
+  );
+}
+
+export default function PostCard({ post, handleDelete }) {
+  const { username } = useSelector((state) => state.user);
+
+  return (
+    <div className={styles.postCardWrapper}>
+      <div className={styles.header}>
+        <h2>{post.title}</h2>
+        {username == post.username && (
+          <ActionsButtons postId={post.id} handleDelete={handleDelete} />
+        )}
+      </div>
+      <div className={styles.content}>
+        <div className={styles.informationWrapper}>
+          <p>@{post.username}</p>
+          <p>25 minutes ago</p>
         </div>
-    )
+        <p>{post.content}</p>
+      </div>
+    </div>
+  );
 }
