@@ -1,0 +1,18 @@
+main{
+    background-color: #fff;
+    align-self: center;
+    width: 40%;
+    max-width: 500px;
+    padding: 24px;
+    border-radius: 16px;
+    border: 1px solid var(--color-light-gray);
+}
+
+main h1{
+    margin-bottom: 24px;
+}
+
+main button{
+    margin-top: 16px;
+    margin-left: auto;
+}
