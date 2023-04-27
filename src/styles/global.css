@@ -4,6 +4,8 @@
   --color-light-gray: #cccccc;
   --color-gray: #999999;
   --color-dark-gray: #777777;
+  --color-dark-gray-apha: #77777780;
+  --color-warning: #FF5151;
 }
 
 * {
@@ -20,7 +22,8 @@ button,
 input,
 input::placeholder,
 textarea,
-textarea::placeholder {
+textarea::placeholder,
+span {
   font-family: "Roboto", sans-serif;
 }
 
