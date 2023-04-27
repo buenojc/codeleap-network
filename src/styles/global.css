@@ -1,0 +1,21 @@
+:root{
+    --color-background: #DDDDDD;
+    --color-main: #7695EC;
+    --color-light-gray: #CCCCCC;
+    --color-dark-gray: #777777;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+h1, p, label, button, input, input::placeholder{
+    font-family: 'Roboto', sans-serif;
+}
+
+h1{
+    font-weight: 700;
+    font-size: 1.375rem;
+}
