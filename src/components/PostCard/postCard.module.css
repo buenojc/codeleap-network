@@ -3,6 +3,13 @@
     border-radius: 16px 16px 0 0 ;
     padding: 24px;
     color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.postCardWrapper .header h2{
+    width: 70%;
 }
 
 .postCardWrapper .content{
@@ -22,4 +29,16 @@
 
 .postCardWrapper .informationWrapper p:first-child{
     font-weight: 700;
+}
+
+.postCardWrapper .actionsWrapper{
+    display: flex;
+    align-items: center;
+    width: 11%;
+    justify-content: space-between;
+}
+
+.postCardWrapper .actionsWrapper img{
+    cursor: pointer;
+    height: 100%;
 }
