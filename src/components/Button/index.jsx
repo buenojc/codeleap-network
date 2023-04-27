@@ -1,5 +1,19 @@
-import styles from './button.module.css'
+import styles from "./button.module.css";
 
-export default function Button({ children, type }) {
-  return <button className={styles.btnComponent} type={type}>{children}</button>;
+export default function Button({
+  children,
+  type,
+  disabled,
+  onClick,
+}) {
+  return (
+    <button
+      className={styles.btnComponent}
+      disabled={disabled}
+      onClick={onClick}
+      type={type}
+    >
+      {children}
+    </button>
+  );
 }

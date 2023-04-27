@@ -10,3 +10,7 @@
     text-transform: uppercase;
     cursor: pointer;
 }
+
+.btnComponent:disabled{
+    background-color: var(--color-light-gray);
+}
