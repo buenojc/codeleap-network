@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Button from "../../components/Button";
 import Container from "../../components/Container";
 import Input from "../../components/Input";
-import "./signupPage.style.css";
+import styles from "./signupPage.module.css";
 
 export default function SignupPage() {
   const [username, setUsername] = useState("");
@@ -27,7 +27,7 @@ export default function SignupPage() {
 
   return (
     <Container>
-      <main>
+      <main className={styles.signupPageWrapper}>
         <h1>Welcome to CodeLeap network!</h1>
         <form onSubmit={handleSubmit}>
           <Input

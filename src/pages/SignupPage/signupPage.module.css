@@ -1,4 +1,4 @@
-main{
+.signupPageWrapper{
     background-color: #fff;
     align-self: center;
     width: 40%;
@@ -8,11 +8,11 @@ main{
     border: 1px solid var(--color-light-gray);
 }
 
-main h1{
+.signupPageWrapper h1{
     margin-bottom: 24px;
 }
 
-main button{
+.signupPageWrapper button{
     margin-top: 16px;
     margin-left: auto;
 }
