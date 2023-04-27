@@ -14,11 +14,11 @@ export default function Textarea({
         {children}
       </label>
       <textarea
-        // value={value}
+        value={value}
         name={name}
         // id={name}
         placeholder={placeholder}
-        // onChange={onChange}
+        onChange={onChange}
       ></textarea>
     </div>
   );
