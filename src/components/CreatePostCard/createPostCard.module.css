@@ -1,0 +1,19 @@
+.createPostCardWrapper {
+  padding: 24px;
+  border-radius: 8px;
+  border: 1px solid var(--color-gray)
+}
+
+.createPostCardWrapper h2{
+    margin-bottom: 24px;
+}
+
+.createPostCardWrapper > form div + div{
+    margin-top: 24px;
+}
+
+.createPostCardWrapper button{
+    text-transform: capitalize;
+    margin-left: auto;
+    margin-top: 24px;
+}
