@@ -1,0 +1,13 @@
+.homePageWrapper{
+    background-color: #fff;
+    width: 90%;
+    max-width: 800px;
+}
+
+.homePageWrapper main{
+    padding: 24px;
+}
+
+.homePageWrapper main > div + div{
+    margin-top: 24px;
+}
