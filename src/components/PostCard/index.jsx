@@ -25,7 +25,7 @@ function ActionsButtons({ post }) {
 
 
   async function handleDelete() {
-    const postsAfterDelete = await deletePost(postId);
+    const postsAfterDelete = await deletePost(post.id);
     dispatch(setPosts(postsAfterDelete))
   }
 
