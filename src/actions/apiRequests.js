@@ -3,7 +3,6 @@ import axios from "axios";
 export const getAllPosts = async () => {
   try {
     const posts = await axios.get("https://dev.codeleap.co.uk/careers/");
-    console.log(posts.data.results);
     return posts.data.results;
   } catch (e) {
     console.log(e);
