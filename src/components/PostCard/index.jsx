@@ -6,14 +6,23 @@ import DeleteModal from "../DeleteModal";
 import { useState } from "react";
 import { deletePost } from "../../actions/apiRequests";
 import { setPosts } from "../../actions/postActions";
+import EditModal from "../EditModal";
+
 
 function ActionsButtons({ postId }) {
   const dispatch = useDispatch();
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const [openEditModal, setOpenEditModal] = useState(false);
 
-  function handleCloseModal() {
+
+  function handleCloseModalDelete() {
     setOpenDeleteModal(false);
   }
+
+  function handleCloseModaEdit() {
+    setOpenEditModal(false);
+  }
+
 
   async function handleDelete() {
     const postsAfterDelete = await deletePost(postId);
@@ -26,15 +35,16 @@ function ActionsButtons({ postId }) {
         <span onClick={() => setOpenDeleteModal(true)}>
           <img src={DeleteIcon} alt="Delete Post" />
         </span>
-        <span>
+        <span onClick={() => setOpenEditModal(true)}>
           <img src={EditIcon} alt="Edit Post" />
         </span>
         {openDeleteModal && (
           <DeleteModal
-            closeModal={handleCloseModal}
+            closeModal={handleCloseModalDelete}
             handleDelete={handleDelete}
           />
         )}
+        {openEditModal && <EditModal closeModal={handleCloseModaEdit} /> }
       </div>
     </>
   );

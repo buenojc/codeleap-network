@@ -1,17 +1,25 @@
-.deleteButtonsContainer{
+.editModalTitle{
+    margin-bottom: 24px;
+}
+
+.editInputsContainer div + div{
+    margin-top: 24px;
+}
+
+.editButtonsContainer{
     display: flex;
     justify-content: flex-end;
     gap:16px;
     align-items: center;
-    margin-top: 40px;
+    margin-top: 24px;
 }
 
-.deleteButtonsContainer button{
-    background-color: var(--color-warning);
+.editButtonsContainer button{
+    background-color: var(--color-success);
     text-transform: capitalize;
 }
 
-.deleteButtonsContainer span{
+.editButtonsContainer span{
     padding: 7px 30px;
     border-radius: 8px;
     border: none;
