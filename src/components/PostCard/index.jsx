@@ -9,7 +9,7 @@ import { setPosts } from "../../actions/postActions";
 import EditModal from "../EditModal";
 
 
-function ActionsButtons({ postId }) {
+function ActionsButtons({ post }) {
   const dispatch = useDispatch();
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [openEditModal, setOpenEditModal] = useState(false);
@@ -44,7 +44,7 @@ function ActionsButtons({ postId }) {
             handleDelete={handleDelete}
           />
         )}
-        {openEditModal && <EditModal closeModal={handleCloseModaEdit} /> }
+        {openEditModal && <EditModal post={post} closeModal={handleCloseModaEdit} /> }
       </div>
     </>
   );
@@ -58,7 +58,7 @@ export default function PostCard({ post, handleDelete }) {
       <div className={styles.header}>
         <h2>{post.title}</h2>
         {username == post.username && (
-          <ActionsButtons postId={post.id} handleDelete={handleDelete} />
+          <ActionsButtons post={post} handleDelete={handleDelete} />
         )}
       </div>
       <div className={styles.content}>
