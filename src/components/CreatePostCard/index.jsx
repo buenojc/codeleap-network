@@ -2,6 +2,7 @@ import styles from "./createPostCard.module.css";
 import Input from "../Input";
 import Textarea from "../Textarea";
 import Button from "../Button";
+import { useEffect, useState } from "react";
 
 export default function CreatePostCart({
   titleValue,
@@ -10,6 +11,16 @@ export default function CreatePostCart({
   contentChange,
   onSubmit
 }) {
+
+  const [disableButton, setDisableButton] = useState(true)
+  useEffect(() => {
+    if(contentValue !== '' && titleValue !== ''){
+      setDisableButton(false)
+    }else{
+      setDisableButton(true)
+    }
+  }, [titleValue, contentValue])
+
   return (
     <div className={styles.createPostCardWrapper}>
       <h2>What's in your mind?</h2>
@@ -18,7 +29,7 @@ export default function CreatePostCart({
           Title
         </Input>
         <Textarea placeholder="Content here" value={contentValue} onChange={contentChange}>Content</Textarea>
-        <Button onClick={onSubmit} type="submit">Create</Button>
+        <Button onClick={onSubmit} disabled={disableButton} type="submit">Create</Button>
       </form>
     </div>
   );
