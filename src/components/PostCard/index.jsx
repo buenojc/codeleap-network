@@ -3,17 +3,17 @@ import DeleteIcon from "../../assets/delete-icon.svg";
 import EditIcon from "../../assets/edit-icon.svg";
 import { useDispatch, useSelector } from "react-redux";
 import DeleteModal from "../DeleteModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { deletePost } from "../../actions/apiRequests";
 import { setPosts } from "../../actions/postActions";
 import EditModal from "../EditModal";
+import dateFormatter from "../../utils/dateFormatter";
 
 
 function ActionsButtons({ post }) {
   const dispatch = useDispatch();
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [openEditModal, setOpenEditModal] = useState(false);
-
 
   function handleCloseModalDelete() {
     setOpenDeleteModal(false);
@@ -52,6 +52,21 @@ function ActionsButtons({ post }) {
 
 export default function PostCard({ post, handleDelete }) {
   const { username } = useSelector((state) => state.user);
+  const [postDate, setPostDate] = useState('')
+  const [informationLoaded, setInformationLoaded] = useState(false)
+  
+  useEffect(() => {
+    setPostDate(dateFormatter(post.created_datetime))
+    setInformationLoaded(true)
+  }, [])
+
+  useEffect(() => {
+    if(informationLoaded){
+      setInterval(() => {
+        setPostDate(dateFormatter(post.created_datetime))
+      }, 60 * 1000)
+    }
+  }, [informationLoaded])
 
   return (
     <div className={styles.postCardWrapper}>
@@ -64,7 +79,7 @@ export default function PostCard({ post, handleDelete }) {
       <div className={styles.content}>
         <div className={styles.informationWrapper}>
           <p>@{post.username}</p>
-          <p>25 minutes ago</p>
+          <p>{ postDate }</p>
         </div>
         <p>{post.content}</p>
       </div>
