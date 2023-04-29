@@ -3,26 +3,38 @@ import ButtonComponent from "../../components/ButtonComponent";
 import ContainerComponent from "../../components/ContainerComponent";
 import InputComponent from "../../components/InputComponent";
 import styles from "./signupPage.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { setLogin } from "../../actions/loginActions";
 
 export default function SignupPage() {
-  const [username, setUsername] = useState("");
+  const { user } = useSelector((state) => state);
+  const [informedUsername, setInformedUsername] = useState("");
   const [disable, setDisable] = useState(false);
+  const [usernameError, setUsernameError] = useState(false)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   function handleChange(event) {
-    setUsername(event.target.value);
+    setInformedUsername(event.target.value);
   }
 
   useEffect(() => {
-    if (username != "") {
+    if (informedUsername != "") {
       setDisable(false);
     } else {
       setDisable(true);
     }
-  }, [username]);
+  }, [informedUsername]);
 
-  function handleSubmit(event){
+  function handleSubmit(event) {
     event.preventDefault();
-    console.log('username:', username)
+    if (informedUsername !== user.username) {
+      setUsernameError(true)
+    } else {
+      dispatch(setLogin())
+      navigate('/feed')
+    }
   }
 
   return (
@@ -34,15 +46,13 @@ export default function SignupPage() {
             type="text"
             name="username"
             placeholder="John Doe"
-            value={username}
+            value={informedUsername}
             onChange={handleChange}
           >
             Please enter your username
           </InputComponent>
-          <ButtonComponent
-            type="submit"
-            disabled={disable}
-          >
+          {usernameError && <p className={styles.usernameError}>Username not found, please try again</p>}
+          <ButtonComponent type="submit" disabled={disable}>
             Enter
           </ButtonComponent>
         </form>

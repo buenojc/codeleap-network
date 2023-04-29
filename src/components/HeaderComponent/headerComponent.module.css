@@ -2,4 +2,15 @@
     background-color: var(--color-main);
     padding: 27px 37px;
     color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header span{
+    cursor: pointer;
+}
+
+.header span:hover{
+    opacity: 0.7;
 }

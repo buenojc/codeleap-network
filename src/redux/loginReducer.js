@@ -5,10 +5,10 @@ const initialState = {
 
 export const loginReducer = (state = initialState, {type, payload}) => {
     switch (type){
-        case 'LOGIN':
-            return state.login = true;
-        case 'LOGOUT':
-            return state.login = false;
+        case 'SET_LOGIN':
+            return {...state, login: true};
+        case 'SET_LOGOUT':
+            return {...state, login: false};
         default:
             return state;
     }

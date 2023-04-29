@@ -1,25 +1,22 @@
 import SignupPage from "./pages/SignupPage";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Routes, Route, Link, BrowserRouter } from "react-router-dom";
 import "./styles/global.css";
 import HomePage from "./pages/HomePage";
 import { Provider } from "react-redux";
 import store from "./redux/store";
-
-const router = createBrowserRouter([
-  {
-    path: "/signup",
-    element: <SignupPage />,
-  },
-  {
-    path: "/",
-    element: <HomePage />,
-  },
-]);
+import PrivateRoutes from "./utils/PrivateRoutes";
 
 export default function App() {
   return (
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <BrowserRouter>
+        <Routes>
+          <Route element={<SignupPage />} path="/" exact />
+          <Route element={<PrivateRoutes />}>
+            <Route element={<HomePage />} path="/feed" />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </Provider>
   );
 }

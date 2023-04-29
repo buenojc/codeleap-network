@@ -1,11 +1,11 @@
-export const login = (posts) => {
+export const setLogin = () => {
     return {
-        type: 'LOGIN',
+        type: 'SET_LOGIN',
     }
 }
 
-export const logout = (posts) => {
+export const setLogout = () => {
     return {
-        type: 'LOGOUT',
+        type: 'SET_LOGOUT',
     }
 }

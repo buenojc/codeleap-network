@@ -16,3 +16,10 @@
     margin-top: 16px;
     margin-left: auto;
 }
+
+
+.signupPageWrapper .usernameError{
+    font-size: 0.9rem;
+    color: var(--color-warning);
+    margin-top: 8px;
+}
