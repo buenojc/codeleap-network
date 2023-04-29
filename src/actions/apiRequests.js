@@ -41,7 +41,7 @@ export const editPost = async (postId, postTitle, postContent) => {
     };
 
     await axios.patch(
-      `https://dev.codeleap.co.uk/careersa/${postId}/`,
+      `https://dev.codeleap.co.uk/careers/${postId}/`,
       updatedPost
     );
     const allPosts = await getAllPosts();
