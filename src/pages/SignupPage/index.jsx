@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import Button from "../../components/Button";
-import Container from "../../components/Container";
-import Input from "../../components/Input";
+import ButtonComponent from "../../components/ButtonComponent";
+import ContainerComponent from "../../components/ContainerComponent";
+import InputComponent from "../../components/InputComponent";
 import styles from "./signupPage.module.css";
 
 export default function SignupPage() {
@@ -26,11 +26,11 @@ export default function SignupPage() {
   }
 
   return (
-    <Container>
+    <ContainerComponent>
       <main className={styles.signupPageWrapper}>
         <h1>Welcome to CodeLeap network!</h1>
         <form onSubmit={handleSubmit}>
-          <Input
+          <InputComponent
             type="text"
             name="username"
             placeholder="John Doe"
@@ -38,15 +38,15 @@ export default function SignupPage() {
             onChange={handleChange}
           >
             Please enter your username
-          </Input>
-          <Button
+          </InputComponent>
+          <ButtonComponent
             type="submit"
             disabled={disable}
           >
             Enter
-          </Button>
+          </ButtonComponent>
         </form>
       </main>
-    </Container>
+    </ContainerComponent>
   );
 }

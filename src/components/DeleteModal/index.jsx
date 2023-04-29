@@ -1,4 +1,4 @@
-import Button from "../Button";
+import ButtonComponent from "../ButtonComponent";
 import styles from "./deleteModal.module.css";
 import ModalContainer from "../ModalContainer";
 
@@ -8,7 +8,7 @@ export default function DeleteModal({ closeModal, handleDelete }) {
       <h2>Are you sure you want to delete this item?</h2>
       <div className={styles.deleteButtonsContainer}>
         <span onClick={() => closeModal(false)}>Cancel</span>
-        <Button onClick={handleDelete}>Delete</Button>
+        <ButtonComponent onClick={handleDelete}>Delete</ButtonComponent>
       </div>
     </ModalContainer>
   );

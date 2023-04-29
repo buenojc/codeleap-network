@@ -1,7 +1,6 @@
-import { useEffect } from "react";
-import styles from "./input.module.css";
+import styles from "./inputComponent.module.css";
 
-export default function Input({
+export default function InputComponent({
   type,
   children,
   name,

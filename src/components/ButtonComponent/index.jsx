@@ -1,6 +1,6 @@
-import styles from "./button.module.css";
+import styles from "./buttonComponent.module.css";
 
-export default function Button({
+export default function ButtonComponent({
   children,
   type,
   disabled,

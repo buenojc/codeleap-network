@@ -1,8 +1,8 @@
-import Button from "../Button";
+import ButtonComponent from "../ButtonComponent";
 import ModalContainer from "../ModalContainer";
 import styles from "./editModal.module.css";
-import Input from "../Input";
-import Textarea from "../Textarea";
+import InputComponent from "../InputComponent";
+import TextareaComponent from "../TextareaComponent";
 import { useState } from "react";
 import { editPost } from "../../actions/apiRequests";
 import { useDispatch } from "react-redux";
@@ -40,16 +40,16 @@ export default function EditModal({ closeModal, post }) {
       <h2 className={styles.editModalTitle}>Edit Item</h2>
       <form onSubmit={handleSubmit}>
         <div className={styles.editInputsContainer}>
-          <Input value={editedTitle} onChange={handleTitleChange}>
+          <InputComponent value={editedTitle} onChange={handleTitleChange}>
             Title
-          </Input>
-          <Textarea value={editedContent} onChange={handleContentChange}>
+          </InputComponent>
+          <TextareaComponent value={editedContent} onChange={handleContentChange}>
             Content
-          </Textarea>
+          </TextareaComponent>
         </div>
         <div className={styles.editButtonsContainer}>
           <span onClick={closeModal}>Cancel</span>
-          <Button>Save</Button>
+          <ButtonComponent>Save</ButtonComponent>
         </div>
       </form>
     </ModalContainer>

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import styles from "./textarea.module.css";
+import styles from "./textareaComponent.module.css";
 
 export default function Textarea({
   children,

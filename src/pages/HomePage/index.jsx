@@ -1,6 +1,6 @@
-import Container from "../../components/Container";
+import ContainerComponent from "../../components/ContainerComponent";
 import styles from "./homePage.module.css";
-import Header from "../../components/Header";
+import HeaderComponent from "../../components/HeaderComponent";
 import CreatePostCart from "../../components/CreatePostCard";
 import PostCard from "../../components/PostCard";
 import { useDispatch, useSelector } from "react-redux";
@@ -54,10 +54,10 @@ export default function HomePage() {
   }, []);
 
   return (
-    <Container>
+    <ContainerComponent>
       <div className={styles.homePageWrapper}>
         <ErrorWarning  />
-        <Header />
+        <HeaderComponent />
         <main>
           <CreatePostCart
             titleValue={title}
@@ -71,6 +71,6 @@ export default function HomePage() {
           ))}
         </main>
       </div>
-    </Container>
+    </ContainerComponent>
   );
 }

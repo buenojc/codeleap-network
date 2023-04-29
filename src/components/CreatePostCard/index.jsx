@@ -1,7 +1,7 @@
 import styles from "./createPostCard.module.css";
-import Input from "../Input";
-import Textarea from "../Textarea";
-import Button from "../Button";
+import InputComponent from "../InputComponent";
+import TextareaComponent from "../TextareaComponent";
+import ButtonComponent from "../ButtonComponent";
 import { useEffect, useState } from "react";
 
 export default function CreatePostCart({
@@ -25,11 +25,11 @@ export default function CreatePostCart({
     <div className={styles.createPostCardWrapper}>
       <h2>What's in your mind?</h2>
       <form>
-        <Input type="text" placeholder="Hello World" value={titleValue} onChange={titleChange}>
+        <InputComponent type="text" placeholder="Hello World" value={titleValue} onChange={titleChange}>
           Title
-        </Input>
-        <Textarea placeholder="Content here" value={contentValue} onChange={contentChange}>Content</Textarea>
-        <Button onClick={onSubmit} disabled={disableButton} type="submit">Create</Button>
+        </InputComponent>
+        <TextareaComponent placeholder="Content here" value={contentValue} onChange={contentChange}>Content</TextareaComponent>
+        <ButtonComponent onClick={onSubmit} disabled={disableButton} type="submit">Create</ButtonComponent>
       </form>
     </div>
   );
