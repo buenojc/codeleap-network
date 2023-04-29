@@ -7,17 +7,25 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllPosts, createPost, deletePost } from "../../actions/apiRequests";
 import { useEffect, useState } from "react";
 import { setPosts } from "../../actions/postActions";
+import { removeError, setError } from "../../actions/errorActions";
+import ErrorWarning from "../../components/ErrorWarning";
 
 export default function HomePage() {
   const { posts } = useSelector((state) => state.posts);
+  const { error } = useSelector((state) => state);
   const { username, login } = useSelector((state) => state.user);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const dispatch = useDispatch();
- 
+
   async function loadPosts() {
-    const posts = await getAllPosts();
-    dispatch(setPosts(posts));
+    try{
+      const posts = await getAllPosts();
+      dispatch(setPosts(posts));
+      // dispatch(removeError())
+    }catch(e){
+      dispatch(setError(e.message))
+    }
   }
 
   function handleTitleChange(event) {
@@ -35,8 +43,9 @@ export default function HomePage() {
         loadPosts()
         setTitle('')
         setContent('')
+        dispatch(removeError())
     }catch(e){
-        console.log(e)
+        dispatch(setError(e.message))
     }
   }
 
@@ -47,6 +56,7 @@ export default function HomePage() {
   return (
     <Container>
       <div className={styles.homePageWrapper}>
+        <ErrorWarning  />
         <Header />
         <main>
           <CreatePostCart

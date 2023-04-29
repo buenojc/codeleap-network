@@ -7,6 +7,7 @@ import { useState } from "react";
 import { editPost } from "../../actions/apiRequests";
 import { useDispatch } from "react-redux";
 import { setPosts } from "../../actions/postActions";
+import { removeError, setError } from "../../actions/errorActions";
 
 export default function EditModal({ closeModal, post }) {
   const [editedTitle, setEditedTitle] = useState(post.title);
@@ -22,10 +23,16 @@ export default function EditModal({ closeModal, post }) {
   }
 
   async function handleSubmit(event) {
-    event.preventDefault();
-    const updatedPosts = await editPost(post.id, editedTitle, editedContent)
-    dispatch(setPosts(updatedPosts));
-    closeModal()
+    try{
+      event.preventDefault();
+      const updatedPosts = await editPost(post.id, editedTitle, editedContent)
+      dispatch(setPosts(updatedPosts));
+      dispatch(removeError())
+      closeModal()
+    }catch(e){
+      closeModal()
+      dispatch(setError(e.message))
+    }
   }
 
   return (

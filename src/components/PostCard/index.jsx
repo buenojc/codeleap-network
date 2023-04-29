@@ -8,6 +8,7 @@ import { deletePost } from "../../actions/apiRequests";
 import { setPosts } from "../../actions/postActions";
 import EditModal from "../EditModal";
 import dateFormatter from "../../utils/dateFormatter";
+import { removeError, setError } from "../../actions/errorActions";
 
 
 function ActionsButtons({ post }) {
@@ -25,8 +26,14 @@ function ActionsButtons({ post }) {
 
 
   async function handleDelete() {
-    const postsAfterDelete = await deletePost(post.id);
-    dispatch(setPosts(postsAfterDelete))
+    try{
+      handleCloseModalDelete()
+      const postsAfterDelete = await deletePost(post.id);
+      dispatch(setPosts(postsAfterDelete))
+      dispatch(removeError())
+    }catch(e){
+      dispatch(setError(e.message))
+    }
   }
 
   return (

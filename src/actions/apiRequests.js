@@ -5,7 +5,7 @@ export const getAllPosts = async () => {
     const posts = await axios.get("https://dev.codeleap.co.uk/careers/");
     return posts.data.results;
   } catch (e) {
-    console.log(e);
+    throw new Error('Unable to get posts, please try again later')
   }
 };
 
@@ -19,7 +19,7 @@ export const createPost = async (postInfo) => {
     await axios.post("https://dev.codeleap.co.uk/careers/", newPost);
     getAllPosts();
   } catch (e) {
-    console.log(e);
+    throw new Error('Unable to create a post, please try again later')
   }
 };
 
@@ -29,7 +29,7 @@ export const deletePost = async (postId) => {
     const allPosts = await getAllPosts();
     return allPosts;
   } catch (e) {
-    console.log(e);
+    throw new Error('Unable to delete the post, please try again later')
   }
 };
 
@@ -41,12 +41,12 @@ export const editPost = async (postId, postTitle, postContent) => {
     };
 
     await axios.patch(
-      `https://dev.codeleap.co.uk/careers/${postId}/`,
+      `https://dev.codeleap.co.uk/careersa/${postId}/`,
       updatedPost
     );
     const allPosts = await getAllPosts();
     return allPosts;
   } catch (e) {
-    console.log(e);
+    throw new Error('Unable to edit the post, please try again later')
   }
 };
