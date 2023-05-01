@@ -11,3 +11,9 @@
 .homePageWrapper main > div + div{
     margin-top: 24px;
 }
+
+.homePageWrapper .loadingAnimationWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

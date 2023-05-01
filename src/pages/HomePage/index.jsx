@@ -4,30 +4,30 @@ import HeaderComponent from "../../components/HeaderComponent";
 import CreatePostCart from "../../components/CreatePostCard";
 import PostCard from "../../components/PostCard";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllPosts, createPost, deletePost } from "../../actions/apiRequests";
+import { getAllPosts, createPost } from "../../actions/apiRequests";
 import { useEffect, useState } from "react";
 import { setPosts } from "../../actions/postActions";
 import { removeError, setError } from "../../actions/errorActions";
 import ErrorWarning from "../../components/ErrorWarning";
 import SuccessWarning from "../../components/SuccessWarning";
 import { setSuccessMessage } from "../../actions/successWarningActions";
+import LoadOlderPostsButton from "../../components/LoadOlderPostsButton";
+import LoadingAnimation from "../../components/LoadingAnimation";
 
 export default function HomePage() {
   const { posts } = useSelector((state) => state.posts);
-  const { error } = useSelector((state) => state);
-  const { successWarning } = useSelector((state) => state);
-  const { username, login } = useSelector((state) => state.user);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
 
   async function loadPosts() {
-    try{
+    try {
       const posts = await getAllPosts();
       dispatch(setPosts(posts));
-      // dispatch(removeError())
-    }catch(e){
-      dispatch(setError(e.message))
+      setLoading(false);
+    } catch (e) {
+      dispatch(setError(e.message));
     }
   }
 
@@ -41,15 +41,15 @@ export default function HomePage() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    try{
-        await createPost({title, content})
-        loadPosts()
-        setTitle('')
-        setContent('')
-        dispatch(removeError())
-        dispatch(setSuccessMessage('🎉 Post created '))
-    }catch(e){
-        dispatch(setError(e.message))
+    try {
+      await createPost({ title, content });
+      loadPosts();
+      setTitle("");
+      setContent("");
+      dispatch(removeError());
+      dispatch(setSuccessMessage("🎉 Post created "));
+    } catch (e) {
+      dispatch(setError(e.message));
     }
   }
 
@@ -60,7 +60,7 @@ export default function HomePage() {
   return (
     <ContainerComponent>
       <div className={styles.homePageWrapper}>
-        <ErrorWarning  />
+        <ErrorWarning />
         <SuccessWarning />
         <HeaderComponent />
         <main>
@@ -71,9 +71,18 @@ export default function HomePage() {
             contentChange={handleContentChange}
             onSubmit={handleSubmit}
           />
-          {posts.map((post) => (
-            <PostCard post={post} key={post.id} />
-          ))}
+          {loading ? (
+            <div className={styles.loadingAnimationWrapper}>
+              <LoadingAnimation />
+            </div>
+          ) : (
+            <>
+              {posts.map((post) => (
+                <PostCard post={post} key={post.id} />
+              ))}
+              <LoadOlderPostsButton />
+            </>
+          )}
         </main>
       </div>
     </ContainerComponent>

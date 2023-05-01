@@ -1,0 +1,9 @@
+.loadOlderPostsWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loadOlderPostsWrapper button{
+    text-transform: initial;
+}
