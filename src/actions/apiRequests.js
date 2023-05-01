@@ -9,11 +9,11 @@ export const getAllPosts = async () => {
   }
 };
 
-export const createPost = async (postInfo) => {
+export const createPost = async (postInfo, username) => {
   try {
     const newPost = {
       ...postInfo,
-      username: "testDev",
+      username,
     };
 
     await axios.post("https://dev.codeleap.co.uk/careers/", newPost);

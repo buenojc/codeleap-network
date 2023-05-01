@@ -17,6 +17,7 @@ import ReturnToTopButton from "../../components/ReturnToTopButton";
 
 export default function HomePage() {
   const { posts } = useSelector((state) => state.posts);
+  const { user } = useSelector((state) => state)
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [loading, setLoading] = useState(true);
@@ -43,7 +44,7 @@ export default function HomePage() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      await createPost({ title, content });
+      await createPost({ title, content }, user.username);
       loadPosts();
       setTitle("");
       setContent("");

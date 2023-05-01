@@ -56,6 +56,7 @@ export default function SignupPage() {
             Enter
           </ButtonComponent>
         </form>
+        <p>username: {user.username}</p>
       </main>
     </ContainerComponent>
   );

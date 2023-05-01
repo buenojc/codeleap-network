@@ -1,6 +1,6 @@
 const initialState = {
     login: false,
-    username: 'testDev'
+    username: 'CodeLeapDev'
 }
 
 export const loginReducer = (state = initialState, {type, payload}) => {
