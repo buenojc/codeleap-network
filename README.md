@@ -25,13 +25,13 @@ The username can be found on the login page.
 
 1- Install all dependencies
 ```bash
-	npm i
+npm i
 ```
 
 
 1- Start up the development server
 ```bash
-	npm run dev
+npm run dev
 ```
 
 <br>
