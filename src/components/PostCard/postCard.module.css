@@ -35,11 +35,24 @@
 .postCardWrapper .actionsWrapper{
     display: flex;
     align-items: center;
-    width: 11%;
+    width: 70px;
     justify-content: space-between;
 }
 
 .postCardWrapper .actionsWrapper img{
     cursor: pointer;
     height: 100%;
+}
+
+
+@media (max-width: 800px){
+    .postCardWrapper .content{
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 530px){
+    .postCardWrapper .informationWrapper{
+        flex-direction: column;
+    }
 }

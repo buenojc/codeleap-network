@@ -23,3 +23,8 @@
 }
 
 
+@media (max-width: 530px ){
+    .modalContainer .modal{
+        width: 100%;
+    } 
+}

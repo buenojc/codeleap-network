@@ -17,3 +17,14 @@
     align-items: center;
     justify-content: center;
 }
+
+@media (max-width: 530px){
+    .homePageWrapper{
+        width: 100%;
+    }
+
+    .homePageWrapper main{
+    padding: 8px;
+    padding-bottom: 24px;
+}
+}
