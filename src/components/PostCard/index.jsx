@@ -9,6 +9,7 @@ import { setPosts } from "../../actions/postActions";
 import EditModal from "../EditModal";
 import dateFormatter from "../../utils/dateFormatter";
 import { removeError, setError } from "../../actions/errorActions";
+import { setSuccessMessage } from "../../actions/successWarningActions";
 
 
 function ActionsButtons({ post }) {
@@ -31,6 +32,7 @@ function ActionsButtons({ post }) {
       const postsAfterDelete = await deletePost(post.id);
       dispatch(setPosts(postsAfterDelete))
       dispatch(removeError())
+      dispatch(setSuccessMessage('Post deleted'))
     }catch(e){
       dispatch(setError(e.message))
     }

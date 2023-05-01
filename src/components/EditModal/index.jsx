@@ -8,6 +8,7 @@ import { editPost } from "../../actions/apiRequests";
 import { useDispatch } from "react-redux";
 import { setPosts } from "../../actions/postActions";
 import { removeError, setError } from "../../actions/errorActions";
+import { setSuccessMessage } from "../../actions/successWarningActions";
 
 export default function EditModal({ closeModal, post }) {
   const [editedTitle, setEditedTitle] = useState(post.title);
@@ -28,6 +29,7 @@ export default function EditModal({ closeModal, post }) {
       const updatedPosts = await editPost(post.id, editedTitle, editedContent)
       dispatch(setPosts(updatedPosts));
       dispatch(removeError())
+      dispatch(setSuccessMessage('Post edited'))
       closeModal()
     }catch(e){
       closeModal()

@@ -9,10 +9,13 @@ import { useEffect, useState } from "react";
 import { setPosts } from "../../actions/postActions";
 import { removeError, setError } from "../../actions/errorActions";
 import ErrorWarning from "../../components/ErrorWarning";
+import SuccessWarning from "../../components/SuccessWarning";
+import { setSuccessMessage } from "../../actions/successWarningActions";
 
 export default function HomePage() {
   const { posts } = useSelector((state) => state.posts);
   const { error } = useSelector((state) => state);
+  const { successWarning } = useSelector((state) => state);
   const { username, login } = useSelector((state) => state.user);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -44,6 +47,7 @@ export default function HomePage() {
         setTitle('')
         setContent('')
         dispatch(removeError())
+        dispatch(setSuccessMessage('🎉 Post created '))
     }catch(e){
         dispatch(setError(e.message))
     }
@@ -57,6 +61,7 @@ export default function HomePage() {
     <ContainerComponent>
       <div className={styles.homePageWrapper}>
         <ErrorWarning  />
+        <SuccessWarning />
         <HeaderComponent />
         <main>
           <CreatePostCart

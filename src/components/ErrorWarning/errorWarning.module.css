@@ -35,3 +35,32 @@
     transform: translateY(0);
   }
 }
+
+
+.errorWarningWrapper.closeWarning{
+  animation: closeAnimation 900ms ease 0s 1 normal forwards;
+}
+
+@keyframes animation {
+  0% {
+    opacity: 0;
+    transform: translateY(-250px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes closeAnimation {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-250px);
+  }
+}
+
