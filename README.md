@@ -29,7 +29,7 @@ npm i
 ```
 
 
-1- Start up the development server
+2- Start up the development server
 ```bash
 npm run dev
 ```
