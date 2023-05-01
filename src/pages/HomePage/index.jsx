@@ -13,6 +13,7 @@ import SuccessWarning from "../../components/SuccessWarning";
 import { setSuccessMessage } from "../../actions/successWarningActions";
 import LoadOlderPostsButton from "../../components/LoadOlderPostsButton";
 import LoadingAnimation from "../../components/LoadingAnimation";
+import ReturnToTopButton from "../../components/ReturnToTopButton";
 
 export default function HomePage() {
   const { posts } = useSelector((state) => state.posts);
@@ -84,6 +85,7 @@ export default function HomePage() {
             </>
           )}
         </main>
+        <ReturnToTopButton />
       </div>
     </ContainerComponent>
   );

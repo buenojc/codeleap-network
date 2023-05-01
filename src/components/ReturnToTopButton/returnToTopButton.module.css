@@ -1,0 +1,22 @@
+.returnToTopButtonWrapper{
+    position: fixed;
+    bottom: 10%;
+    right: 25%;
+}
+
+.returnToTopButtonWrapper button{
+    border-radius: 50%;
+    padding: 16px;
+    background-color: var(--color-main);
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.returnToTopButtonWrapper button svg{
+    fill: #fff;
+}
+
+.returnToTopButtonWrapper button:hover{
+    opacity: 0.8;
+}
