@@ -40,7 +40,6 @@ export default function SignupPage() {
 
   useEffect(() => {
     const isUserLogged = localStorage.getItem('login')
-    const user = JSON.parse(isUserLogged)
 
     if(isUserLogged){
       dispatch(setLogin())
