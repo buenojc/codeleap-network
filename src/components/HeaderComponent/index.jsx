@@ -7,7 +7,9 @@ export default function HeaderComponent() {
   const dispatch = useDispatch()
   
   function handleLogout(){
-    dispatch(setLogout())    
+    localStorage.removeItem('login')
+    dispatch(setLogout())
+        
   }
 
   return (

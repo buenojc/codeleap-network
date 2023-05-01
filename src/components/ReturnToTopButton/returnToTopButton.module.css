@@ -11,6 +11,9 @@
     border: none;
     color: white;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .returnToTopButtonWrapper button svg{

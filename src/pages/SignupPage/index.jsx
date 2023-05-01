@@ -33,9 +33,21 @@ export default function SignupPage() {
       setUsernameError(true)
     } else {
       dispatch(setLogin())
+      localStorage.setItem('login', JSON.stringify({login:true}))
       navigate('/feed')
     }
   }
+
+  useEffect(() => {
+    const isUserLogged = localStorage.getItem('login')
+    const user = JSON.parse(isUserLogged)
+
+    if(isUserLogged){
+      dispatch(setLogin())
+      navigate('/feed')
+    }
+
+  }, [])
 
   return (
     <ContainerComponent>
