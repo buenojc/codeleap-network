@@ -1,5 +1,5 @@
 import ContainerComponent from "../../components/ContainerComponent";
-import styles from "./homePage.module.css";
+import styles from "./feedPage.module.css";
 import HeaderComponent from "../../components/HeaderComponent";
 import CreatePostCart from "../../components/CreatePostCard";
 import PostCard from "../../components/PostCard";
@@ -15,7 +15,7 @@ import LoadOlderPostsButton from "../../components/LoadOlderPostsButton";
 import LoadingAnimation from "../../components/LoadingAnimation";
 import ReturnToTopButton from "../../components/ReturnToTopButton";
 
-export default function HomePage() {
+export default function FeedPage() {
   const { posts } = useSelector((state) => state.posts);
   const { user } = useSelector((state) => state)
   const [title, setTitle] = useState("");
@@ -61,7 +61,7 @@ export default function HomePage() {
 
   return (
     <ContainerComponent>
-      <div className={styles.homePageWrapper}>
+      <div className={styles.feedPageWrapper}>
         <ErrorWarning />
         <SuccessWarning />
         <HeaderComponent />

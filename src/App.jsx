@@ -1,7 +1,7 @@
 import SignupPage from "./pages/SignupPage";
 import { Routes, Route, Link, BrowserRouter } from "react-router-dom";
 import "./styles/global.css";
-import HomePage from "./pages/HomePage";
+import FeedPage from "./pages/FeedPage";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import PrivateRoutes from "./utils/PrivateRoutes";
@@ -13,7 +13,7 @@ export default function App() {
         <Routes>
           <Route element={<SignupPage />} path="/" exact />
           <Route element={<PrivateRoutes />}>
-            <Route element={<HomePage />} path="/feed" />
+            <Route element={<FeedPage />} path="/feed" />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -1,0 +1,30 @@
+.feedPageWrapper {
+  background-color: #fff;
+  width: 90%;
+  max-width: 800px;
+}
+
+.feedPageWrapper main {
+  padding: 24px;
+}
+
+.feedPageWrapper main > div + div {
+  margin-top: 24px;
+}
+
+.feedPageWrapper .loadingAnimationWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 530px) {
+  .feedPageWrapper {
+    width: 100%;
+  }
+
+  .feedPageWrapper main {
+    padding: 8px;
+    padding-bottom: 24px;
+  }
+}
